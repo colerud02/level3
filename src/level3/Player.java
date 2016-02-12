@@ -1,5 +1,7 @@
 package level3;
 
+import java.util.Comparator;
+
 public class Player {
 	private String name;
 	private int kills;
@@ -30,8 +32,18 @@ public class Player {
 		return kills * 5;
 
 	}
-	public String getName()
-	{
+
+	public String getName() {
 		return name;
+	}
+
+	public class Pcomp implements Comparator<Player> {
+
+		@Override
+		public int compare(Player o1, Player o2) {
+			// TODO Auto-generated method stub
+			return o1.getKills() - o2.getKills();
+		}
+
 	}
 }
