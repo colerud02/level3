@@ -58,7 +58,7 @@ public class CookieOrderTest {
 	@Test
 	public void testAddCookieOrderConstructor() throws Exception {
 		MasterOrder masterOrder = new MasterOrder();
-		masterOrder.AddOrder(new CookieOrder("chocolate chip", 3));
+		masterOrder.addOrder(new CookieOrder("chocolate chip", 3));
 		assertEquals(1, masterOrder.getOrder().size());
 
 		assertEquals(3, masterOrder.getOrder().get(0).getNumBoxes());
@@ -71,16 +71,16 @@ public class CookieOrderTest {
 	 * The getTotalBoxes method computes and returns the sum of the number of boxes of all cookie orders. If there are no cookie orders in the master
 	 * order, the method returns 0.
 	 */
-//	@Test
-//	public void testGetTotalBoxes() throws Exception {
-//		MasterOrder goodies = new MasterOrder();
-//		goodies.addOrder(new CookieOrder("Chocolate Chip", 1));
-//		goodies.addOrder(new CookieOrder("Shortbread", 5));
-//		goodies.addOrder(new CookieOrder("Macaroon", 2));
-//		goodies.addOrder(new CookieOrder("Chocolate Chip", 3));
-//
-//		assertEquals(11, goodies.getTotalBoxes());
-//	}
+	@Test
+	public void testGetTotalBoxes() throws Exception {
+		MasterOrder goodies = new MasterOrder();
+		goodies.addOrder(new CookieOrder("Chocolate Chip", 1));
+		goodies.addOrder(new CookieOrder("Shortbread", 5));
+		goodies.addOrder(new CookieOrder("Macaroon", 2));
+		goodies.addOrder(new CookieOrder("Chocolate Chip", 3));
+
+		assertEquals(11, goodies.getTotalBoxes());
+	}
 
 	/*
 	 * PART B
@@ -89,18 +89,18 @@ public class CookieOrderTest {
 	 * cookieVar. The master order may contain zero or more cookie orders with the same variety as cookieVar. The method returns the total number of
 	 * boxes removed from the master order.
 	 */
-//	@Test
-//	public void testRemoveVariety() throws Exception {
-//		MasterOrder goodies = new MasterOrder();
-//		goodies.addOrder(new CookieOrder("Chocolate Chip", 1));
-//		goodies.addOrder(new CookieOrder("Shortbread", 5));
-//		goodies.addOrder(new CookieOrder("Macaroon", 2));
-//		goodies.addOrder(new CookieOrder("Chocolate Chip", 3));
-//		goodies.addOrder(new CookieOrder("Macaroon", 7));
-//		
-//		assertEquals(4, goodies.removeVariety("Chocolate Chip"));
-//		assertEquals(0, goodies.removeVariety("Brownie"));
-//	}
+	@Test
+	public void testRemoveVariety() throws Exception {
+		MasterOrder goodies = new MasterOrder();
+		goodies.addOrder(new CookieOrder("Chocolate Chip", 1));
+		goodies.addOrder(new CookieOrder("Shortbread", 5));
+		goodies.addOrder(new CookieOrder("Macaroon", 2));
+		goodies.addOrder(new CookieOrder("Chocolate Chip", 3));
+		goodies.addOrder(new CookieOrder("Macaroon", 7));
+		
+		assertEquals(4, goodies.removeVariety("Chocolate Chip"));
+		assertEquals(0, goodies.removeVariety("Brownie"));
+	}
 
 }
 
