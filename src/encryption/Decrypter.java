@@ -11,7 +11,17 @@ public class Decrypter {
 
 	public String decode(String encodedText) {
 		//update this to decode the message!
-		return null;
+		String d = "";
+		for (Character c : encodedText.toCharArray()) {
+			if (c < 97 || c > 122)
+				d+= c;
+			else
+				d+=mapping.get(c);
+				
+		}
+
+		
+		return d;
 	}
 	
 	public static HashMap<Character, Character> readMappingFile() throws IOException {
@@ -22,7 +32,7 @@ public class Decrypter {
 		while ( (myLine = bufRead.readLine()) != null)
 		{    
 		    String[] array = myLine.split(":");
-		    mapping.put(array[0].charAt(0), array[1].charAt(0));		    
+		    mapping.put(array[1].charAt(0), array[0].charAt(0));		    
 		}
 		
 		return mapping;

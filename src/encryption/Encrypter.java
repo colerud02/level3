@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+//briruqforcecoryrw
+
 
 public class Encrypter {
 	
