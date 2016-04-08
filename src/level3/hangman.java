@@ -50,7 +50,9 @@ public class hangman implements KeyListener {
 		jl.setText(currentWord);
 
 	}
-
+	
+		
+	
 	private void playPuzzle(String word) {
 		// currentWord = Puzzles.pop();
 
@@ -68,21 +70,42 @@ public class hangman implements KeyListener {
 			jp.add(j);
 		}
 	}
-
+	private boolean isGameOver(){		
+		for (JLabel l : letters) {
+			if (l.getText().equals("_")) {
+				return false;
+			}
+		}
+		return true;
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {
+if (e.getKeyChar() == '\n'&& isGameOver()) {
+			currentWord = Puzzles.pop();
+			jf.remove(jp);
+			JPanel jp = new JPanel();
+			jf.add(jp);
+			for (JLabel j : letters) {
+				jp.add(j);
+			}
+			jp.add(jl);
+			playPuzzle(currentWord);
+			
+			
+		}
+		boolean foundSomething = false;
 		for (int i = 0; i < currentWord.length(); i++) {
 
 			if (currentWord.toCharArray()[i] == e.getKeyChar()) {
 				letters.get(i).setText(" " + e.getKeyChar());
 				jf.pack();
+				foundSomething = true;
 			}
-			else{
-				life-=1;
-				
-				jl3.setText(" "+life);
-				jf.pack();
-			}
+			
+		}
+		if (foundSomething == false) {
+			life -=1;
+			jl3.setText(""+life);
 		}
 
 	}
